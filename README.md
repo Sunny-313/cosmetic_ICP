@@ -1,2 +1,16 @@
-# cosmetic_ICP
-Record Information of Domestic General Cosmetics
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: Sunny
+ * @Date: 2022-01-28 13:37:00
+ * @LastEditors: Yaoyao
+ * @LastEditTime: 2022-01-28 14:35:51
+-->
+
+# 化妆品备案信息获取
+## 1. 验证码问题的处理
+- 目前我只是F12分析图片产生的方法为get，然后批量下载验证码的图片；
+- 对于下载下来的验证码，使用ddddIOcr验证码识别库，对简单验证码进行识别（目前识别的准确率还是蛮高的）；
+> 这里需要注意几个问题：
+> - 不需要重复请求验证码，对于请求过的验证码序列号不要频繁请求
+> - 关于图片的读写问题
