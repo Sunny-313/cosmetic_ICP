@@ -10,18 +10,19 @@ import requests
 import urllib.request
 import ddddocr
 
-def save_pic(file,data):
+def save_pic(file,data,filename):
     with open(file,'wb') as p:
        p.write(data.read())
+       print(f"成功保存文件: {filename}")
+    with open(file,'rb') as d:
        ocr = ddddocr.DdddOcr()
-       res = ocr.classification(data.read())
-       print(f"成功保存文件: {file}")
+       res = ocr.classification(d.read())
        print("识别验证码为: {}".format(res))
 
-def dataCode(file,data):
-    with open(file,'rb') as p:
-        p.write(data.read())
-    print(f"成功保存文件: {file}")
+# def dataCode(file,data):
+#     with open(file,'rb') as p:
+#         p.write(data.read())
+#     print(f"成功保存文件: {file}")
       
 if __name__ == '__main__':   
     
@@ -53,7 +54,7 @@ if __name__ == '__main__':
     
     root  = os.path.join(os.getcwd(),'pic')
     # 定义下载验证码图片的数量
-    num = 5
+    num = 21
     for i in range(1,num+1):
         
         filename = '第{}张验证码.jpg'.format(i)
@@ -70,7 +71,7 @@ if __name__ == '__main__':
         except Exception as e:
             print('Error:',e)
 
-        save_pic(file,conn)
+        save_pic(file,conn,filename)
        
         
     
